@@ -1,10 +1,10 @@
-package com.example.questtugasuserinput.ui.theme
+package com.example.questtugasuserinput_0178.ui.theme
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.colorResource
-import com.example.questtugasuserinput.R
+import com.example.questtugasuserinput_0178.R
 
 @Composable
 fun QuestTheme(content: @Composable () -> Unit) {

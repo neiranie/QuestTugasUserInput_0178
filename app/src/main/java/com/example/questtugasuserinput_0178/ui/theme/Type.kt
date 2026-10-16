@@ -1,4 +1,4 @@
-package com.example.questtugasuserinput.ui.theme
+package com.example.questtugasuserinput_0178.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
