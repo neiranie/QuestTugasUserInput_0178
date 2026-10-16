@@ -92,9 +92,7 @@ fun ColumnScope.FormContent() {
     SkillsRow(skills) { id -> if (id in skills) skills.remove(id) else skills.add(id) }
     Spacer(Modifier.height(dimensionResource(R.dimen.spacing_large)))
 
-    val isValid = firstName.isNotBlank() && lastName.isNotBlank() &&
-            Patterns.EMAIL_ADDRESS.matcher(email).matches() &&
-            birthDate.isNotBlank() && experience.isNotBlank() && skills.isNotEmpty()
+    val isValid = isFormValid(firstName, lastName, email, birthDate, experience, skills)
     ProceedButton(enabled = isValid) { }
 
     if (showPicker) {
@@ -256,3 +254,14 @@ fun ProceedButton(enabled: Boolean, onClick: () -> Unit) {
         )
     }
 }
+
+fun isFormValid(
+    firstName: String,
+    lastName: String,
+    email: String,
+    birthDate: String,
+    experience: String,
+    skills: List<Int>
+): Boolean = firstName.isNotBlank() && lastName.isNotBlank() &&
+        Patterns.EMAIL_ADDRESS.matcher(email).matches() &&
+        birthDate.isNotBlank() && experience.isNotBlank() && skills.isNotEmpty()
