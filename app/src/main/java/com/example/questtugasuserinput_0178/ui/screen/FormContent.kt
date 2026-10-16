@@ -51,7 +51,7 @@ import java.util.TimeZone
 fun ColumnScope.FormHeaderText() {
     Text(
         text = stringResource(R.string.form_title),
-        color = colorResource(R.color.purple_primary),
+        color = colorResource(R.color.text_title_cream),
         fontSize = dimensionResource(R.dimen.text_title).value.sp,
         fontWeight = FontWeight.Bold,
         modifier = Modifier.align(Alignment.CenterHorizontally)
@@ -212,7 +212,7 @@ fun SkillCheckbox(label: String, checked: Boolean, onCheckedChange: (Boolean) ->
             checked = checked,
             onCheckedChange = onCheckedChange,
             colors = CheckboxDefaults.colors(
-                checkedColor = colorResource(R.color.purple_primary),
+                checkedColor = colorResource(R.color.text_title_cream),
                 uncheckedColor = colorResource(R.color.checkbox_border)
             )
         )
@@ -241,7 +241,7 @@ fun ProceedButton(enabled: Boolean, onClick: () -> Unit) {
         enabled = enabled,
         shape = RoundedCornerShape(dimensionResource(R.dimen.button_corner)),
         colors = ButtonDefaults.buttonColors(
-            containerColor = colorResource(R.color.purple_primary),
+            containerColor = colorResource(R.color.text_title_cream),
             contentColor = colorResource(R.color.button_enabled_text),
             disabledContainerColor = colorResource(R.color.button_disabled_bg),
             disabledContentColor = colorResource(R.color.button_disabled_text)

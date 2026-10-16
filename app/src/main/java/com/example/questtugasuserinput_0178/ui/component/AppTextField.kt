@@ -40,7 +40,7 @@ fun AppTextField(
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
         shape = RoundedCornerShape(dimensionResource(R.dimen.field_corner)),
         colors = OutlinedTextFieldDefaults.colors(
-            focusedBorderColor = colorResource(R.color.purple_primary),
+            focusedBorderColor = colorResource(R.color.text_title_cream),
             unfocusedBorderColor = colorResource(R.color.field_border),
             focusedTextColor = colorResource(R.color.text_label),
             unfocusedTextColor = colorResource(R.color.text_label)

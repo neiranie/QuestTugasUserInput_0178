@@ -9,7 +9,7 @@ import com.example.questtugasuserinput_0178.R
 @Composable
 fun QuestTheme(content: @Composable () -> Unit) {
     val scheme = lightColorScheme(
-        primary = colorResource(R.color.purple_primary),
+        primary = colorResource(R.color.text_title_cream),
         background = colorResource(R.color.screen_background),
         surface = colorResource(R.color.card_background),
         onSurface = colorResource(R.color.text_label)

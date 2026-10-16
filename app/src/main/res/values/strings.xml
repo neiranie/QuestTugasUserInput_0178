@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Quest User Input</string>
     <string name="form_title">Biodata Form</string>
-    <string name="form_subtitle">Please fill in your biodata below !!!</string>
+    <string name="form_subtitle">Please fill in your biodata below !</string>
     <string name="hint_first_name">First Name</string>
     <string name="hint_last_name">Last Name</string>
     <string name="hint_email">Email</string>
