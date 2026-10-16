@@ -10,9 +10,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
@@ -37,6 +34,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -136,7 +134,10 @@ fun BirthDateField(date: String, modifier: Modifier = Modifier, onClick: () -> U
             readOnly = true,
             modifier = Modifier.fillMaxWidth(),
             trailingIcon = {
-                Icon(Icons.Default.DateRange, stringResource(R.string.cd_calendar))
+                Icon(
+                    painter = painterResource(R.drawable.ic_calendar),
+                    contentDescription = stringResource(R.string.cd_calendar)
+                )
             }
         )
         Box(Modifier.matchParentSize().clickable(onClick = onClick))
@@ -178,7 +179,10 @@ fun ExperienceDropdown(selected: String, modifier: Modifier = Modifier, onSelect
             readOnly = true,
             modifier = Modifier.fillMaxWidth(),
             trailingIcon = {
-                Icon(Icons.Default.ArrowDropDown, stringResource(R.string.cd_dropdown))
+                Icon(
+                    painter = painterResource(R.drawable.ic_dropdown),
+                    contentDescription = stringResource(R.string.cd_dropdown)
+                )
             }
         )
         Box(Modifier.matchParentSize().clickable { expanded = true })
