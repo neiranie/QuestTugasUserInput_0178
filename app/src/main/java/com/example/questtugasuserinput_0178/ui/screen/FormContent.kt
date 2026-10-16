@@ -133,3 +133,22 @@ fun SkillsLabel() {
         fontWeight = FontWeight.Bold
     )
 }
+
+@Composable
+fun SkillCheckbox(label: String, checked: Boolean, onCheckedChange: (Boolean) -> Unit) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Checkbox(
+            checked = checked,
+            onCheckedChange = onCheckedChange,
+            colors = CheckboxDefaults.colors(
+                checkedColor = colorResource(R.color.purple_primary),
+                uncheckedColor = colorResource(R.color.checkbox_border)
+            )
+        )
+        Text(
+            text = label,
+            color = colorResource(R.color.text_label),
+            fontSize = dimensionResource(R.dimen.text_skill).value.sp
+        )
+    }
+}
