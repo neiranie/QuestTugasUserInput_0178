@@ -56,3 +56,20 @@ fun EmailField(email: String, onChange: (String) -> Unit) {
         modifier = Modifier.fillMaxWidth()
     )
 }
+
+@Composable
+fun BirthDateField(date: String, modifier: Modifier = Modifier, onClick: () -> Unit) {
+    Box(modifier) {
+        AppTextField(
+            value = date,
+            onValueChange = {},
+            placeholder = stringResource(R.string.hint_birth_date),
+            readOnly = true,
+            modifier = Modifier.fillMaxWidth(),
+            trailingIcon = {
+                Icon(Icons.Default.DateRange, stringResource(R.string.cd_calendar))
+            }
+        )
+        Box(Modifier.matchParentSize().clickable(onClick = onClick))
+    }
+}
