@@ -96,3 +96,30 @@ fun BirthDatePickerDialog(onDismiss: () -> Unit, onDateSelected: (String) -> Uni
         }
     ) { DatePicker(state = state) }
 }
+
+@Composable
+fun ExperienceDropdown(selected: String, modifier: Modifier = Modifier, onSelected: (String) -> Unit) {
+    var expanded by remember { mutableStateOf(false) }
+    val options = stringArrayResource(R.array.experience_options)
+    Box(modifier) {
+        AppTextField(
+            value = selected,
+            onValueChange = {},
+            placeholder = stringResource(R.string.hint_experience),
+            readOnly = true,
+            modifier = Modifier.fillMaxWidth(),
+            trailingIcon = {
+                Icon(Icons.Default.ArrowDropDown, stringResource(R.string.cd_dropdown))
+            }
+        )
+        Box(Modifier.matchParentSize().clickable { expanded = true })
+        DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+            options.forEach { option ->
+                DropdownMenuItem(
+                    text = { Text(option) },
+                    onClick = { onSelected(option); expanded = false }
+                )
+            }
+        }
+    }
+}
