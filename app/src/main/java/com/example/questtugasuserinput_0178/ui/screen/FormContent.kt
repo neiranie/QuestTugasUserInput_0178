@@ -1,18 +1,53 @@
 package com.example.questtugasuserinput_0178.ui.screen
 
+import android.util.Patterns
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CheckboxDefaults
+import androidx.compose.material3.DatePicker
+import androidx.compose.material3.DatePickerDialog
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.sp
 import com.example.questtugasuserinput_0178.R
+import com.example.questtugasuserinput_0178.ui.component.AppTextField
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+import java.util.TimeZone
 
 @Composable
 fun ColumnScope.FormHeaderText() {
@@ -35,7 +70,41 @@ fun ColumnScope.FormHeaderText() {
 
 @Composable
 fun ColumnScope.FormContent() {
+    var firstName by rememberSaveable { mutableStateOf("") }
+    var lastName by rememberSaveable { mutableStateOf("") }
+    var email by rememberSaveable { mutableStateOf("") }
+    var birthDate by rememberSaveable { mutableStateOf("") }
+    var experience by rememberSaveable { mutableStateOf("") }
+    var showPicker by rememberSaveable { mutableStateOf(false) }
+    val skills = remember { mutableStateListOf<Int>() }
+
+    val gap = dimensionResource(R.dimen.spacing_medium)
+
     FormHeaderText()
+    NameRow(firstName, { firstName = it }, lastName, { lastName = it })
+    Spacer(Modifier.height(gap))
+    EmailField(email) { email = it }
+    Spacer(Modifier.height(gap))
+    Row(horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))) {
+        BirthDateField(birthDate, Modifier.weight(1f)) { showPicker = true }
+        ExperienceDropdown(experience, Modifier.weight(1f)) { experience = it }
+    }
+    Spacer(Modifier.height(gap))
+    SkillsLabel()
+    SkillsRow(skills) { id -> if (id in skills) skills.remove(id) else skills.add(id) }
+    Spacer(Modifier.height(dimensionResource(R.dimen.spacing_large)))
+
+    val isValid = firstName.isNotBlank() && lastName.isNotBlank() &&
+            Patterns.EMAIL_ADDRESS.matcher(email).matches() &&
+            birthDate.isNotBlank() && experience.isNotBlank() && skills.isNotEmpty()
+    ProceedButton(enabled = isValid) { }
+
+    if (showPicker) {
+        BirthDatePickerDialog(
+            onDismiss = { showPicker = false },
+            onDateSelected = { birthDate = it }
+        )
+    }
 }
 
 @Composable
@@ -160,5 +229,26 @@ fun SkillsRow(selected: List<Int>, onToggle: (Int) -> Unit) {
         skills.forEach { id ->
             SkillCheckbox(stringResource(id), id in selected) { onToggle(id) }
         }
+    }
+}
+
+@Composable
+fun ProceedButton(enabled: Boolean, onClick: () -> Unit) {
+    Button(
+        onClick = onClick,
+        enabled = enabled,
+        shape = RoundedCornerShape(dimensionResource(R.dimen.button_corner)),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = colorResource(R.color.purple_primary),
+            contentColor = colorResource(R.color.button_enabled_text),
+            disabledContainerColor = colorResource(R.color.button_disabled_bg),
+            disabledContentColor = colorResource(R.color.button_disabled_text)
+        ),
+        modifier = Modifier.fillMaxWidth().height(dimensionResource(R.dimen.button_height))
+    ) {
+        Text(
+            text = stringResource(R.string.btn_proceed),
+            fontSize = dimensionResource(R.dimen.text_button).value.sp
+        )
     }
 }
