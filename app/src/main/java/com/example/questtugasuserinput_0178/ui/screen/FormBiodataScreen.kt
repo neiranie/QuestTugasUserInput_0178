@@ -17,3 +17,15 @@ fun FormBiodataScreen() {
         }
     }
 }
+
+@Composable
+fun HeaderImage(modifier: Modifier = Modifier) {
+    Image(
+        painter = painterResource(R.drawable.img_header_maps),
+        contentDescription = stringResource(R.string.cd_header_image),
+        contentScale = ContentScale.Crop,
+        modifier = modifier
+            .fillMaxWidth()
+            .height(dimensionResource(R.dimen.header_height))
+    )
+}
