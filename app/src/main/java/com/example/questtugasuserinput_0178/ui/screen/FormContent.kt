@@ -45,3 +45,14 @@ fun NameRow(first: String, onFirst: (String) -> Unit, last: String, onLast: (Str
         AppTextField(last, onLast, stringResource(R.string.hint_last_name), Modifier.weight(1f))
     }
 }
+
+@Composable
+fun EmailField(email: String, onChange: (String) -> Unit) {
+    AppTextField(
+        value = email,
+        onValueChange = onChange,
+        placeholder = stringResource(R.string.hint_email),
+        keyboardType = KeyboardType.Email,
+        modifier = Modifier.fillMaxWidth()
+    )
+}
