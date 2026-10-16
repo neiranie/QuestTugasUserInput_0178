@@ -123,3 +123,13 @@ fun ExperienceDropdown(selected: String, modifier: Modifier = Modifier, onSelect
         }
     }
 }
+
+@Composable
+fun SkillsLabel() {
+    Text(
+        text = stringResource(R.string.label_skills),
+        color = colorResource(R.color.text_label),
+        fontSize = dimensionResource(R.dimen.text_label).value.sp,
+        fontWeight = FontWeight.Bold
+    )
+}
