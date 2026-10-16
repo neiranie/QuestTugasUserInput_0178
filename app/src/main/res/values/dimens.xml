@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="header_height">300dp</dimen>
+    <dimen name="card_top_margin">240dp</dimen>
+    <dimen name="card_corner">32dp</dimen>
+    <dimen name="card_elevation">8dp</dimen>
+    <dimen name="card_padding">24dp</dimen>
+    <dimen name="field_corner">24dp</dimen>
+    <dimen name="field_height">56dp</dimen>
+    <dimen name="spacing_small">8dp</dimen>
+    <dimen name="spacing_medium">16dp</dimen>
+    <dimen name="spacing_large">24dp</dimen>
+    <dimen name="button_height">48dp</dimen>
+    <dimen name="button_corner">24dp</dimen>
+    <dimen name="dot_size">6dp</dimen>
+    <dimen name="dot_spacing">4dp</dimen>
+    <dimen name="dot_padding">16dp</dimen>
+    <dimen name="text_title">28sp</dimen>
+    <dimen name="text_subtitle">12sp</dimen>
+    <dimen name="text_field">14sp</dimen>
+    <dimen name="text_label">14sp</dimen>
+    <dimen name="text_skill">12sp</dimen>
+    <dimen name="text_button">14sp</dimen>
+</resources>
