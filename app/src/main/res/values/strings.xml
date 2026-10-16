@@ -1,3 +1,21 @@
 <resources>
-    <string name="app_name">QuestTugasUserInput_0178</string>
+    <string name="app_name">Quest User Input</string>
+    <string name="form_title">Biodata Form</string>
+    <string name="form_subtitle">Please fill in your biodata below !!!</string>
+    <string name="hint_first_name">First Name</string>
+    <string name="hint_last_name">Last Name</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_birth_date">Date of Birth</string>
+    <string name="hint_experience">Experience</string>
+    <string name="label_skills">Select Your Skills :</string>
+    <string name="skill_android">Android</string>
+    <string name="skill_uiux">UI/UX</string>
+    <string name="skill_web">Web</string>
+    <string name="btn_proceed">Proceed</string>
+    <string name="btn_ok">OK</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="date_format">dd/MM/yyyy</string>
+    <string name="cd_header_image">Header image of old maps</string>
+    <string name="cd_calendar">Open calendar</string>
+    <string name="cd_dropdown">Open experience list</string>
 </resources>
