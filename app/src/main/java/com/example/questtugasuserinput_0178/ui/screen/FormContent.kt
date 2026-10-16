@@ -37,3 +37,11 @@ fun ColumnScope.FormHeaderText() {
 fun ColumnScope.FormContent() {
     FormHeaderText()
 }
+
+@Composable
+fun NameRow(first: String, onFirst: (String) -> Unit, last: String, onLast: (String) -> Unit) {
+    Row(horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))) {
+        AppTextField(first, onFirst, stringResource(R.string.hint_first_name), Modifier.weight(1f))
+        AppTextField(last, onLast, stringResource(R.string.hint_last_name), Modifier.weight(1f))
+    }
+}
