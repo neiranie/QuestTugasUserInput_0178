@@ -73,3 +73,26 @@ fun BirthDateField(date: String, modifier: Modifier = Modifier, onClick: () -> U
         Box(Modifier.matchParentSize().clickable(onClick = onClick))
     }
 }
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun BirthDatePickerDialog(onDismiss: () -> Unit, onDateSelected: (String) -> Unit) {
+    val state = rememberDatePickerState()
+    val pattern = stringResource(R.string.date_format)
+    DatePickerDialog(
+        onDismissRequest = onDismiss,
+        confirmButton = {
+            TextButton(onClick = {
+                state.selectedDateMillis?.let {
+                    val fmt = SimpleDateFormat(pattern, Locale.getDefault())
+                    fmt.timeZone = TimeZone.getTimeZone("UTC")
+                    onDateSelected(fmt.format(Date(it)))
+                }
+                onDismiss()
+            }) { Text(stringResource(R.string.btn_ok)) }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.btn_cancel)) }
+        }
+    ) { DatePicker(state = state) }
+}
