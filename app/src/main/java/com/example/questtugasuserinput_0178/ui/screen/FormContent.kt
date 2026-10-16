@@ -152,3 +152,13 @@ fun SkillCheckbox(label: String, checked: Boolean, onCheckedChange: (Boolean) ->
         )
     }
 }
+
+@Composable
+fun SkillsRow(selected: List<Int>, onToggle: (Int) -> Unit) {
+    val skills = listOf(R.string.skill_android, R.string.skill_uiux, R.string.skill_web)
+    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+        skills.forEach { id ->
+            SkillCheckbox(stringResource(id), id in selected) { onToggle(id) }
+        }
+    }
+}
